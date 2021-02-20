@@ -21,7 +21,6 @@ export default function List() {
   }, []);
 
   function handleDelete(idx) {
-    console.log(idx);
     data.splice(idx, 1);
     localStorage.setItem("stgData", JSON.stringify(data));
     setData(JSON.parse(localStorage.getItem("stgData")));
@@ -81,7 +80,7 @@ export default function List() {
             />
           </Col>
           <Col>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className="mr-3">
               Update
             </Button>
             <Button variant="danger" onClick={() => setEditMode(false)}>
@@ -92,8 +91,8 @@ export default function List() {
       </Form>
     ) : (
       <Row className="text-center mt-2">
-        <Col>{item.name}</Col>
-        <Col>{_.get(item, "email")}</Col>
+        <Col>{_.get(item, "name")}</Col>
+        <Col>{_.defaultTo(item.email, "email not given")}</Col>
         <Col>{formatDate(item.birthDate)}</Col>
         <Col>
           <Trash

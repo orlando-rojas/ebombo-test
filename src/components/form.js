@@ -4,13 +4,12 @@ import { Form, Button } from "react-bootstrap";
 export default function RegisterForm() {
   const initialState = {
     name: "",
-    email: "",
-    birthDate: "",
+    email: null,
+    birthDate: null,
   };
 
   const [data, setData] = React.useState(initialState);
 
-  console.log(data);
   const storagedData = JSON.parse(localStorage.getItem("stgData")) || [];
 
   function handleChange(e) {
